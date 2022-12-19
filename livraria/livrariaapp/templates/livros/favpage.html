@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Favoritos{% endblock %}
+{% block content %}
+  <h1>Carrinho</h1>
+  {% if fav.livros.exists %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome do livro</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for livro in fav.livros.all %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td><a> {{ livro.nome }}   </a><small><a href='#'>Deseja remover?</a></small></td>
+          <td>{{ product.price }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p class='lead'>Favorito vazio</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}livro de Livros{% endblock %}
+
+{% block content %}
+
+<div class="offset-1 col-10 list-div">
+    <h1>lista de Livros</h1>
+        <div>
+            <div class="card-body">
+                <hr>
+                    {% for livro in livro %}
+                        <p>{{ livro.nome }}</p> 
+                        <a class="btn btn-success" href="{% url 'addfav' livro.id %}">Salvar</a>
+        
+                    {% endfor %}
+            </div>
+           
+        </div>
+</div>
+{% endblock %}
