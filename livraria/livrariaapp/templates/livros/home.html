@@ -12,6 +12,7 @@
                     {% for livro in livro %}
                         <p>{{ livro.nome }}</p> 
                         <a class="btn btn-success" href="{% url 'addfav' livro.id %}">Salvar</a>
+                        <a class="btn btn-success" href="{% url 'livroview' livro.id %}">Detalhe</a>
         
                     {% endfor %}
             </div>

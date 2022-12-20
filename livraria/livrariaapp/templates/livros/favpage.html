@@ -15,8 +15,8 @@
         {% for livro in fav.livros.all %}
         <tr>
           <th scope="row">{{ forloop.counter }}</th>
-          <td><a> {{ livro.nome }}   </a><small><a href='#'>Deseja remover?</a></small></td>
-          <td>{{ product.price }}</td>
+          <td><a> {{ livro.nome }}   </a><small> <a  href="{% url 'deletelivro' livro.id %}" class="btn btn-danger" onclick="return confirm('Tem certeza?')">Deletar</a></small></td>
+          
         </tr>
         {% endfor %}
       </tbody>

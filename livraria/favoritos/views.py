@@ -23,5 +23,24 @@ def addfav(request, livros_id):
     return redirect('/')
 
 
+@login_required
+def deletelivro(request, id):
+    livro =  Livros.objects.get(id=id)
+    try:
+        fav = Favoritos2.objects.get(user=request.user)
+    except Favoritos2.DoesNotExist:
+        fav = Favoritos2.objects.create(user=request.user)
+    try:
+        if livro in fav.livros.all():
+            fav.livros.remove(livro)
+        else:
+            print('livro nao Existe')
+    except Livros.DoesNotExist:
+        print('livro nao Existe')
+
+
+
+    return redirect('/')
+
 
     

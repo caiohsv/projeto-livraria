@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Favoritos{% endblock %}
+{% block content %}
+
+<table  class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">nome</th>
+        <th scope="col">autor</th>
+        <th scope="col">resumo</th>
+        <th scope="col">genero</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">{{ livro.nome }}</th>
+        <td>{{ livro.autor}}</td>
+        <td>{{ livro.resumo }}</td>
+        <td>{{ livro.genero }}</td>
+      </tr>      
+    </tbody>
+  </table>
+
+{% endblock %}
