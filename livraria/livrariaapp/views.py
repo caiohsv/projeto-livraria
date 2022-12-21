@@ -1,16 +1,23 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.paginator import Paginator
 from favoritos.models import Favoritos2
 from livrariaapp.models import Livros
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 
 
-@login_required
+
 def home(request):
-    livro = Livros.objects.all()
+    livros = Livros.objects.all()
+    
+    paginator = Paginator(livros, 4)
+
+    page = request.GET.get('page')
+
+    livro = paginator.get_page(page)
 
     context = {
-        'livro': livro
+        'livro':livro
     }
 
     return render(request, 'livros/home.html', context)
@@ -22,6 +29,7 @@ def favpage(request):
     except ObjectDoesNotExist:
         pass
     
+
     context = {
         'fav':fav
     }
