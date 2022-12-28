@@ -4,16 +4,17 @@
 
 {% block content %}
 
-<div class="offset-1 col-10 list-div">
+<div class="container">
     <h1>lista de Livros</h1>
-        <div>
-            <div class="card-body">
-                <hr>
+        <div class="row">
+    
                     {% for livro in livro %}
-                        <p>{{ livro.nome }}</p> 
-                        <a class="btn btn-success" href="{% url 'addfav' livro.id %}">Salvar</a>
-                        <a class="btn btn-success" href="{% url 'livroview' livro.id %}">Detalhe</a>
-        
+                        <div class="col">
+                            <p>{{ livro.nome }}</p>
+                            <a class="btn btn-success" href="{% url 'addfav' livro.id %}">Salvar</a>
+                                <a class="btn btn-success" href="{% url 'livroview' livro.id %}">Detalhe</a>
+                    
+                            </div>
                     {% endfor %}
             </div>
             <div class="pagination">
@@ -34,5 +35,4 @@
                 </span>
             </div>
         </div> 
-</div>
 {% endblock %}
