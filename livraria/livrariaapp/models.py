@@ -5,6 +5,7 @@ class Livros(models.Model):
     autor = models.CharField(max_length=50)
     resumo = models.TextField()
     genero = models.CharField(max_length=50)
+    image  = models.FileField(upload_to = 'livraria/', null = True, blank = True)
 
     def __str__(self):
         return self.nome
