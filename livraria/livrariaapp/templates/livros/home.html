@@ -3,7 +3,7 @@
 {% block title %}livro de Livros{% endblock %}
 
 {% block content %}
-
+<img src='{{ object.image.url }}' class='img-fluid' />
 <div class="container">
     <h1>lista de Livros</h1>
         <div class="row">
@@ -11,9 +11,10 @@
                     {% for livro in livro %}
                         <div class="col">
                             <p>{{ livro.nome }}</p>
+                            <img src='{{ livro.image.url }}' class='img-fluid' />
                             <a class="btn btn-success" href="{% url 'addfav' livro.id %}">Salvar</a>
                                 <a class="btn btn-success" href="{% url 'livroview' livro.id %}">Detalhe</a>
-                    
+
                             </div>
                     {% endfor %}
             </div>
