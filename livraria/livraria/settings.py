@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+from decouple import Csv, config
 import os
 from pathlib import Path
 
@@ -80,10 +81,11 @@ WSGI_APPLICATION = 'livraria.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'MeuProjeto',
-        'USER': 'postgres',
-        'PASSWORD': '7do1de2002',
-        'HOST': 'localhost'
+        'NAME': config('POSTGRES_DB', 'dicas_de_django_db'),
+        'USER': config('POSTGRES_USER', 'postgres'),
+        'PASSWORD': config('POSTGRES_PASSWORD', 'postgres'),
+        'HOST': config('DB_HOST', 'localhost'),
+        'PORT': config('DB_PORT', 5431, cast=int),
     }
 }
 
